@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="top-bar">
+    <h2>Your Secret Notes</h2>
+    <a href="{{ url_for('main.add_note_view') }}" class="btn">+ Add Note</a>
+</div>
+
+{% if notes %}
+    <div class="notes-grid">
+        {% for note in notes %}
+            <div class="card note-card">
+                <h3>Note</h3>
+                <p><strong>Decrypted:</strong></p>
+                <p class="note-text">{{ note.plain }}</p>
+
+                <details>
+                    <summary>Show encrypted version</summary>
+                    <p class="cipher-text">{{ note.encrypted }}</p>
+                </details>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="card empty-state">
+        <h3>No notes yet</h3>
+        <p>Add your first secret note. It will be stored using Caesar cipher.</p>
+        <a href="{{ url_for('main.add_note_view') }}" class="btn">Add a Note</a>
+    </div>
+{% endif %}
+{% endblock %}

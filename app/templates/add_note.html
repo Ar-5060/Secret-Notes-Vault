@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+    <h2>Add a Secret Note</h2>
+    <p class="subtitle">
+        This note will be stored in the database in encrypted form using Caesar cipher.
+    </p>
+
+    <form method="POST" class="form">
+        <div class="form-group">
+            <label for="note_text">Note</label>
+            <textarea
+                id="note_text"
+                name="note_text"
+                rows="4"
+                placeholder="Write something secret..."
+                required></textarea>
+        </div>
+
+        <div class="form-actions">
+            <a href="{{ url_for('main.dashboard') }}" class="btn-secondary">Cancel</a>
+            <button type="submit" class="btn">Save Note</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

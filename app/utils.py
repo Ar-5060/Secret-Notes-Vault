@@ -1,0 +1,12 @@
+def caesar_cipher(text, shift=3, mode='encrypt'):
+    if mode == 'decrypt':
+        shift = -shift
+
+    result = ""
+    for ch in text:
+        if ch.isalpha():
+            base = ord('A') if ch.isupper() else ord('a')
+            result += chr((ord(ch) - base + shift) % 26 + base)
+        else:
+            result += ch
+    return result
